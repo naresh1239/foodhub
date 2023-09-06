@@ -5,7 +5,7 @@ import { FaHome, FaHeart, FaSearch,FaShoppingCart,FaUserAlt,FaMicrophone } from 
 import { NavLink} from "react-router-dom";
 import { REFRESH,SET_FILTER_SEARCH_DATA,SET_THEME,RESET_DATA_LIST, NEXT_PAGE,LOGOUT_USER, LOADER} from "../store/Slice"
 import {getItemlist,selectedCategoery} from "./API"
-
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 const Navbar = ({changecatf,filteredData}) => {
   const [searchInput, setSearchInput] = useState('')
   const [tempSearchInput, setTempSearchInput] = useState('')
@@ -18,6 +18,13 @@ const Navbar = ({changecatf,filteredData}) => {
   const userActive = useSelector((state) => state.slice.userActive)
   const [searchSuggetions , setSearchSuggetions] = useState([])
   const dispatch = useDispatch()
+  const {
+    transcript,
+    listening,
+    resetTranscript,
+    browserSupportsSpeechRecognition
+  } = useSpeechRecognition();
+
   console.log('navbar')
 const findSuggesting = async() =>{
   try {
@@ -58,49 +65,25 @@ const findSuggesting = async() =>{
     // setstoreSetData(filterdata)
   }
   
-  // const ChnageThemes = () =>{
-   
-  //   const item = localStorage.getItem('theme');
-  //   if(item == 'dark'){
-  //     localStorage.setItem("theme", "light")
-  //   }
-  //   else{
-  //     localStorage.setItem("theme","dark");
-  //   }
+  useEffect(() => {
+    if(transcript && listening == false){
+      setShowMic(false)
+      findSuggesting()
+    }
+    setMicinput(transcript)
+    setSearchInput(transcript)
+    }, [transcript,listening])
+    
+  if (!browserSupportsSpeechRecognition) {
+    return <span>Browser doesn't support speech recognition.</span>;
+  }
 
-  //  dispatch(SET_THEME(item))
-
-  // }
 
 
  const runSpeechRecog = () => {
   setMicinput("")
   setShowMic(true)
-  
-    let recognization = ''
-    console.log(recognization)
-    recognization.onstart = () => {
-    
-    }
-    recognization.onresult = (e) => {
-       var transcript = e.results[0][0].transcript;
-       setMicinput(transcript)
-       setSearchInput(transcript)
-       findSuggesting()
-
-    }
-   
-
-   recognization.onend = (e)=>{
-
-    setShowMic(false)
-   }
-
-    recognization.start();
- 
-  // setShowMic(false)
-  //     recognization.stop();
-  
+  SpeechRecognition.startListening()
  }
 
 
@@ -164,25 +147,32 @@ const findSuggesting = async() =>{
 
       </div>{" "}
       <div className="sub-list">
-  
+     {/* <p>Microphone: {listening ? 'on' : 'off'}</p>
+      <button onClick={SpeechRecognition.startListening}>Start</button>
+      <button onClick={SpeechRecognition.stopListening}>Stop</button>
+      <button onClick={resetTranscript}>Reset</button>
+      <p>{transcript}</p> */}
     
       </div>
       <div className="search">
       <div className="serchbar">
         <input name="search"  value={searchInput} placeholder="search..." onChange={inputChange} onClick={inputChange}></input>
         {searchInput ?  <span style={{cursor : 'pointer',paddingRight : '5px'}} onClick={()=>{ setSearchInput('')}} >x</span> : ""}
-        {/* {<span style={{cursor : 'pointer'}} onClick={()=>{Find_filter_DATA(), setSearchSuggetions([])}} >      <FaSearch /> </span>} */}
+        {<span style={{cursor : 'pointer'}} onClick={()=>{Find_filter_DATA()
+           setSearchSuggetions([])}} >      <FaSearch /> </span>}
      
        {searchSuggetions?.length > 0 && searchInput.length > 0 ? <div className="suggestion">
         <div className="closeSuggestion" onClick={()=>setSearchSuggetions([])}>x</div>
           <ul>
-            {/* {
+            {
               searchSuggetions?.map((item)=>{
                 return(
-                  <li className="searchSuggetionsList" onClick={()=>{setSearchSuggetions([]) , setSearchInput(item)}}>{item}</li>
+                  <li className="searchSuggetionsList" onClick={()=>{
+                    setSearchSuggetions([])
+                     setSearchInput(item)}}>{item}</li>
                 )
               })
-            } */}
+            }
            
           </ul>
         </div>
@@ -201,14 +191,20 @@ const findSuggesting = async() =>{
 
       </div>
 
-  {/* {ShowMic ? <div className="micPopup" onBlur={()=>{setShowMic(false), setMicinput('')}}>
-    <span className="crossbtn" onClick={()=>{setShowMic(false), setMicinput('')}}>X</span>
+  {ShowMic ? <div className="micPopup" onBlur={()=>{setShowMic(false)
+    setMicinput('')}}>
+    <span className="crossbtn" onClick={()=>{setShowMic(false)
+      setMicinput('')}}>X</span>
     <div className="main">
     <p>{micInput}</p>
     <FaMicrophone/>
       </div>
-    <button onClick={()=>{setSearchInput(micInput),Find_filter_DATA() ,setShowMic(false), setMicinput(''),setSearchSuggetions([])}}>search</button>
-  </div> : null} */}
+    <button onClick={()=>{setSearchInput(micInput)
+      Find_filter_DATA() 
+      setShowMic(false)
+       setMicinput('')
+       setSearchSuggetions([])}}>search</button>
+  </div> : null}
     </div>
    
     </div>
