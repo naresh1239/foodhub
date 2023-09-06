@@ -51,12 +51,12 @@ const Body = () => {
   
 
   
-
+  console.log('body')
 
       const scrolling = () =>{
 
           if(scrollBefore <  window.scrollY){
-            console.log('body')
+   
               if(window.innerHeight + document.documentElement.scrollTop + 1 >= document.documentElement.scrollHeight){
                  
               if(loader.middle == false ){

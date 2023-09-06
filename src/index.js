@@ -20,27 +20,27 @@ const router = createBrowserRouter([
     element: <App/>,
     children: [
       {
-        path: "*",
+        path: "",
         element: <Body/>,
       },
       {
-        path: "/cart",
+        path: "cart",
         element: <CartPage/>,
       },
       {
-          path: "/favirote",
+          path: "favirote",
           element: <Favirote/>,
         },
         {
-          path: "/details/:cardID",
+          path: "details/:cardID",
           element: <CardDetails/>,
         },
         {
-          path: "/auth",
+          path: "auth",
           element: <Auth/>,
         },
         {
-          path : "/test",
+          path : "test",
           element : <Test/>
         }
     
