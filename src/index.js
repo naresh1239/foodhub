@@ -16,11 +16,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const router = createBrowserRouter([
   {
-    path: "*",
+    path: "foodhub/",
     element: <App/>,
     children: [
       {
-        path: "*",
+        path: "",
         element: <Body/>,
       },
       {
