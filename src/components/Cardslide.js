@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import {  ADD_TO_CART ,ADD_TO_FAVORITE} from '../store/Slice'
 import { Link } from 'react-router-dom'
-console.log('cardsilder')
+
 const Cardslide = () => {
     const dispatch = useDispatch()
     const cartData = useSelector((state) => state.slice.AllCartList)

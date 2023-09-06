@@ -10,7 +10,6 @@ const Favirote = () => {
   const Favorite = useSelector((state)=>state.slice.Favorite)
 
 
-console.log("Favorite")
 
   return (
     <div className='cardBody'>

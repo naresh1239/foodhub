@@ -20,6 +20,5 @@ export const getItemlist = async (url = `https://www.edamam.com/api/recipes/v2?$
     throw error; // Rethrow the error for the caller to handle
   }
 
-  console.log('api')
 };
 

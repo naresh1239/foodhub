@@ -1,7 +1,6 @@
 import React from 'react'
 import { memo } from "react";
 const Notification = ({data,classname,type}) => {
-   console.log("natifi")
   return (
     <div className={ classname ?  'notification' : "hide"}>
      { type == 'cart' ?  <p>You have added this item in cart</p> : null}

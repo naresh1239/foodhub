@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { NEXT_PAGE,RESET_DATA_LIST,LOADER } from '../store/Slice'
 
 
-console.log('SelectorButton')
 const SelectorButton = () => {
     const [selectedcat, setSelectedcat] = useState('')
     const cartData = useSelector((state) => state.slice.AllCartList)

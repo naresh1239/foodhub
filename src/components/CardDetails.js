@@ -6,7 +6,7 @@ const CardDetails = () => {
     const [loader,setLoader] = useState({starting : true , middle : true})
      const {cardID} = useParams()
 
-     console.log('cardDatails')
+
     const getItemlist = async() =>{
         try {
           const jsonData = await fetch(`https://www.edamam.com/api/recipes/v2/${cardID}?type=public`);
@@ -22,7 +22,7 @@ const CardDetails = () => {
      useEffect(()=>{
       getItemlist()
       },[])
-console.log(DataList)
+
   return (
     <div>  
          <div class="img-card iCard-style1 cardDatails">

@@ -10,7 +10,6 @@ import Notification from "./Notification"
 import Simmer from "./Simmer"
 import { getItemlist } from "./API"
 const Cart = () =>{
-  console.log('cart')
 const [ImgURL, setImgURL] = useState(true)
 const [shownotication, setShownotication] = useState({notifiacation : false, data : '', type : ""})
 const dispatch = useDispatch()
@@ -56,13 +55,11 @@ if(Loader) {return( <div className="cardBody">{Array(10).fill("").map((e,i)=><Si
 
 
 const AddToFavorate = (card) =>{
-  console.log("AddToFavorate")
   setShownotication({notifiacation : true, data : card , type : "favorite"})
   dispatch(ADD_TO_FAVORITE(card)) 
 
 }
 const AddToCart = (card) =>{
-  console.log("AddToCart")
   setShownotication({notifiacation : true, data : card , type : "cart"})
   dispatch(ADD_TO_CART(card)) 
 

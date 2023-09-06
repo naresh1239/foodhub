@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 const CartPage = () => {
   const cart = useSelector((state) => state.slice.cart)
   const dispatch = useDispatch()
-  console.log('Cartpage')
   return (
     
   <div className='cardBody'>

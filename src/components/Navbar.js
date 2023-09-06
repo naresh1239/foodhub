@@ -25,7 +25,6 @@ const Navbar = ({changecatf,filteredData}) => {
     browserSupportsSpeechRecognition
   } = useSpeechRecognition();
 
-  console.log('navbar')
 const findSuggesting = async() =>{
   try {
     if(searchInput.length > 0){
@@ -46,7 +45,6 @@ const findSuggesting = async() =>{
     }, 200);  
  
     return ()=>{
-      console.log('clear function')
       clearTimeout(suggestingapi)
     }
     

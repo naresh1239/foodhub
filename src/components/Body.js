@@ -50,8 +50,7 @@ const Body = () => {
 
   
 
-  
-  console.log('body')
+
 
       const scrolling = () =>{
 
