@@ -192,7 +192,7 @@ const findSuggesting = async() =>{
 </div>
 
       <div className="emoji">
-      <NavLink to="foodhub/" title="Recipes"><FaHome /><span>Recipes</span></NavLink>
+      <NavLink to="" title="Recipes"><FaHome /><span>Recipes</span></NavLink>
 
       <NavLink to="favirote" title="Add To Favorite"><FaHeart/><span> Favorite<sup>{FavoriteCat?.length}</sup></span></NavLink>
      <NavLink to="cart" title="Add To Cart"><FaShoppingCart/><span> Cart <sup>{cart?.length}</sup></span></NavLink>
