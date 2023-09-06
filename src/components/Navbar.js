@@ -159,7 +159,7 @@ const findSuggesting = async() =>{
 
 
         {" "}
-        <NavLink className="logo" to="foodhub/" onClick={getapi}><img src={LOGO} alt="logo"></img></NavLink> 
+        <NavLink className="logo" to="/" onClick={getapi}><img src={LOGO} alt="logo"></img></NavLink> 
         {/* <Link className="logo" to="/" ><img src={LOGO} alt="logo"></img></Link>  */}
 
       </div>{" "}
