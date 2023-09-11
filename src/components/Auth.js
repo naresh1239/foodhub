@@ -51,7 +51,7 @@ const dispatch = useDispatch()
                     cart : [],
             
                 })
-                Navigate('');
+                Navigate('foodhub/');
             } else{
                 alert("Password and Confirm Password must be same")
             }
@@ -81,7 +81,7 @@ const dispatch = useDispatch()
           
             if(userfound?.length > 0){
              dispatch(SET_LOGIN_USER())
-             Navigate("")
+             Navigate("foodhub/")
             }else{
                 alert("Email or Password is incorrect, Please try again.")
             }
