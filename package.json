@@ -1,7 +1,7 @@
 {
   "name": "foodhub",
   "version": "0.1.0",
-  "homepage": "https://naresh1239.github.io/foodhub",
+  "homepage": "https://naresh1239.github.io/foodhub/",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
